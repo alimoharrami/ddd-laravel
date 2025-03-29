@@ -3,5 +3,6 @@
     "Article": true,
     "Product": true,
     "Shared": true,
-    "Order": true
+    "Order": true,
+    "Cart": true
 }
