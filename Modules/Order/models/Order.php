@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //todo
+    protected $fillable = [
+        'user_id',
+        'status',
+        'total_price',
+        'shipping_address'
+    ];
 }
