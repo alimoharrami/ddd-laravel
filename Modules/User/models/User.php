@@ -12,8 +12,6 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -23,13 +21,12 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
-        'status',
-        'phone',
         'address',
-        'referral_token',
-        'referral_id',
-        'country_id',
+        'postal_code',
+        'phone',
     ];
+
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that should be hidden for serialization.
