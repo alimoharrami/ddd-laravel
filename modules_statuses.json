@@ -4,5 +4,6 @@
     "Product": true,
     "Shared": true,
     "Order": true,
-    "Cart": true
+    "Cart": true,
+    "Finance": true
 }
