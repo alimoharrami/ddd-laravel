@@ -5,7 +5,7 @@ namespace Modules\Finance\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class FinanceController extends Controller
+class WalletController extends Controller
 {
     /**
      * Display a listing of the resource.
