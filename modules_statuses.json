@@ -2,5 +2,6 @@
     "User": true,
     "Article": true,
     "Product": true,
-    "Shared": true
+    "Shared": true,
+    "Order": true
 }
