@@ -1,5 +1,6 @@
 {
     "User": true,
     "Article": true,
-    "Product": true
+    "Product": true,
+    "Shared": true
 }
