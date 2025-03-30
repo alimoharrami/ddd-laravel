@@ -4,6 +4,7 @@ namespace Modules\User\Shared;
 
 use App\Shared\Contracts\User\UserServiceInterface;
 use models\User;
+use Modules\Shared\DTOs\User\UserAddressDTO;
 use Modules\Shared\DTOs\User\UserDTO;
 use Modules\User\Exceptions\UserNotFoundException;
 
@@ -40,6 +41,11 @@ class UserService implements UserServiceInterface
                 phone: $user->phone,
             );
         })->toArray();
+    }
+
+    public function getUserAddressDTO(int $userId): ?UserAddressDTO
+    {
+        // TODO: Implement getUserAddressDTO() method.
     }
 }
 
