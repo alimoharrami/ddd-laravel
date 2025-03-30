@@ -16,4 +16,6 @@ class Order extends Model
     //todo order product
 
     //todo order enum
+
+    //todo transaction
 }
