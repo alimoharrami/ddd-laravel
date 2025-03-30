@@ -12,4 +12,8 @@ class Order extends Model
         'total_price',
         'shipping_address'
     ];
+
+    //todo order product
+
+    //todo order enum
 }
