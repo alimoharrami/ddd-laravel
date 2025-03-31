@@ -5,13 +5,15 @@ namespace Modules\Finance\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class WalletController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function pay()
     {
-        //todo return wallet and transactions
+        //todo
+        //pay
+        //send order_id to update
     }
 }

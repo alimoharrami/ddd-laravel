@@ -18,12 +18,4 @@ class Transaction extends Model
     //todo type
 
     //todo status
-
-    /**
-     * Get the wallet that owns the transaction.
-     */
-    public function wallet(): BelongsTo
-    {
-        return $this->belongsTo(Wallet::class);
-    }
 }
