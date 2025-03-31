@@ -3,7 +3,8 @@
 namespace App\Modules\Product\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use TransactionStatusEnum;
+use TransactionTypeEnum;
 
 class Transaction extends Model
 {
@@ -15,7 +16,13 @@ class Transaction extends Model
         'status',
     ];
 
-    //todo type
+    public function getTypeNameAttribute(): ?string
+    {
+        return TransactionTypeEnum::STATUS_ALL[$this->type] ?? null;
+    }
 
-    //todo status
+    public function getStatusNameAttribute(): ?string
+    {
+        return TransactionStatusEnum::STATUS_ALL[$this->status] ?? null;
+    }
 }
