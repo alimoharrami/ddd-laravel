@@ -27,7 +27,16 @@ interface OrderServiceInterface
      * order payed change status
      *
      * @param int $order_id
+     * @param int $transaction_id
      * @return void
      */
-    public function orderPayed(int $order_id): void;
+    public function orderPayed(int $order_id, int $transaction_id): void;
+
+    /**
+     * get total order amount with order id
+     *
+     * @param int $order_id
+     * @return float
+     */
+    public function getOrderAmountWithOrderId(int $order_id): float;
 }
