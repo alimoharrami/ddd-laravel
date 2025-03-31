@@ -17,13 +17,11 @@ class userResource extends JsonResource
         return [
             "id" => $this->id,
             "email" => $this->email,
-            "email_verified_at" => $this->email_verified_at,
-            "created_at" => $this->created_at,
-            "updated_at" => $this->updated_at,
             "first_name" => $this->first_name,
             "last_name" => $this->last_name,
             "phone" => $this->phone,
             "address" => $this->address,
+            "postal_code" => $this->postal_code
         ];
     }
 }
