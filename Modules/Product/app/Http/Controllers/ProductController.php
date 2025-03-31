@@ -3,23 +3,37 @@
 namespace Modules\Product\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Modules\Product\Domain\Models\Product;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the product.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //todo return all products
+        $products = Product::all();
+
+        return response()->json([
+            'products' => $products
+        ]);
     }
 
     /**
-     * Show the specified resource.
+     * Show the specified product.
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        //todo return product
+        $product = Product::query()->find($id);
+
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], ResponseAlias::HTTP_NOT_FOUND);
+        }
+
+        return response()->json([
+            'product' => $product
+        ]);
     }
 }

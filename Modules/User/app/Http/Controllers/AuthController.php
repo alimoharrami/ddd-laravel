@@ -10,6 +10,7 @@ use Illuminate\Validation\ValidationException;
 use models\User;
 use Modules\User\Http\Requests\RegisterRequest;
 use Modules\User\Http\Resources\userResource;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class AuthController extends Controller
 {
@@ -89,7 +90,7 @@ class AuthController extends Controller
         Auth::loginUsingId($user->id);
         $user->tokens()->delete();
         $token = $user->createToken('auth_token')->plainTextToken;
-        
+
         return response()->json([
             'data' => [
                 'user'          => new userResource($user),
