@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Finance\Http\Controllers\WalletController;
+use Modules\Finance\Http\Controllers\TransactionController;
 
 Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('finance', WalletController::class)->names('finance');
+    Route::post('pay', [TransactionController::class, 'pay'])->name('pay');
 });
