@@ -12,7 +12,6 @@ class UserService implements UserServiceInterface
 {
     public function getUserDTO(int $userId): ?UserDTO
     {
-
         $user = User::query()->find($userId);
 
         if (!$user) {
@@ -45,7 +44,17 @@ class UserService implements UserServiceInterface
 
     public function getUserAddressDTO(int $userId): ?UserAddressDTO
     {
-        // TODO: Implement getUserAddressDTO() method.
+        $user = User::query()->find($userId);
+
+        if (!$user) {
+            throw new UserNotFoundException("User with ID {$userId} not found.");
+        }
+
+        return new UserAddressDTO(
+            id: $user->id,
+            address: $user->address,
+            postal_code: $user->postal_code,
+        );
     }
 }
 
