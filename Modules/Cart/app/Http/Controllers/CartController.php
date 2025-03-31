@@ -10,47 +10,35 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getCart()
     {
-        return view('cart::index');
+        //todo
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function AddItem(Request $request)
     {
-        return view('cart::create');
+        //todo
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request) {}
-
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
+    public function removeItem(Request $request)
     {
-        return view('cart::show');
+        //todo
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function updateItemQuantity(Request $request)
     {
-        return view('cart::edit');
+        //todo
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id) {}
+    public function createOrder(Request $request)
+    {
+        //todo
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id) {}
+        //get shipment address from user
+
+        //create order
+    }
 }
