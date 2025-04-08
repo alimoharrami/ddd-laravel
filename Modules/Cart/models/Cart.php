@@ -9,13 +9,25 @@ class Cart extends Model
 {
     protected $fillable = ['user_id'];
 
-    //todo cart status
-
     /**
      * Get the cart items for the cart.
      */
     public function items(): HasMany
     {
         return $this->hasMany(CartItem::class);
+    }
+
+    /**
+     * Attaches products to cartItems.
+     */
+    public function attachProductsToItems($products): Cart
+    {
+        $productMap = collect($products)->keyBy('id');
+
+        foreach ($this->items as $item) {
+            $item->product = $productMap[$item->product_id] ?? null;
+        }
+
+        return $this;
     }
 }
