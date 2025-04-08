@@ -21,4 +21,13 @@ interface ProductServiceInterface
      * @return array
      */
     public function getProductDTOs(array $productIds): array;
+
+    /**
+     * get product DTO if its available for given quantity
+     *
+     * @param int $productId
+     * @param int $quantity
+     * @return ProductDTO|null
+     */
+    public function getProductDTOAvailable(int $productId, int $quantity): ?productDTO;
 }
