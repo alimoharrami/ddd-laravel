@@ -2,7 +2,15 @@
 
 namespace App\Shared\Contracts\User;
 
+use Modules\Shared\DTOs\Finance\TransactionDTO;
+
 interface FinanceServiceInterface
 {
-    //todo
+    /**
+     * get Transaction DTOs with order id
+     *
+     * @param int $orderID orderID
+     * @return TransactionDTO[]
+ */
+    public function getTransactionDTOsWithOrderID(int $orderID): array;
 }
