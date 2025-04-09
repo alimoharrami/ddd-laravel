@@ -17,6 +17,11 @@ class Transaction extends Model
         'status',
     ];
 
+    protected $appends = [
+        'type_name',
+        'status_name',
+    ];
+
     public function getTypeNameAttribute(): ?string
     {
         return TransactionTypeEnum::STATUS_ALL[$this->type] ?? null;
