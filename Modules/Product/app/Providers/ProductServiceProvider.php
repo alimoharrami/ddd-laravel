@@ -2,8 +2,10 @@
 
 namespace Modules\Product\Providers;
 
+use App\Shared\Contracts\Product\ProductServiceInterface;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Shared\ProductService;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -36,6 +38,8 @@ class ProductServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+
+        $this->app->singleton(ProductServiceInterface::class, ProductService::class);
     }
 
     /**
