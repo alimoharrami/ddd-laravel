@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\Shared;
+namespace Modules\Product\Shared;
 
 use App\Modules\Product\Domain\Models\Product;
 use App\Shared\Contracts\Product\ProductServiceInterface;
