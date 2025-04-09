@@ -30,4 +30,13 @@ interface ProductServiceInterface
      * @return ProductDTO|null
      */
     public function getProductDTOAvailable(int $productId, int $quantity): ?productDTO;
+
+    /**
+     * reduce product stock
+     *
+     * @param int $productId
+     * @param int $quantity
+     * @return void
+     */
+    public function reduceStock(int $productId, int $quantity): void;
 }

@@ -51,6 +51,22 @@ class ProductService implements ProductServiceInterface
             price: $product->price,
         );
     }
+
+    public function reduceStock(int $productId, int $quantity): void
+    {
+        DB::transaction(function () use ($productId, $quantity) {
+            $product = Product::query()
+                ->where('id', $productId)
+                ->lockForUpdate()
+                ->firstOrFail();
+
+            if ($product->stock < $quantity) {
+                throw new \Exception("Insufficient stock for product ID: $productId");
+            }
+
+            $product->decrement('stock', $quantity);
+        });
+    }
 }
 
 
