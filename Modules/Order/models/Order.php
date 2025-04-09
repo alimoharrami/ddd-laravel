@@ -3,6 +3,9 @@
 namespace App\Modules\Product\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Challenge\App\Enums\PhaseTypeEnum;
+use Modules\Order\Enums\OrderStatusEnum;
 
 class Order extends Model
 {
@@ -13,9 +16,28 @@ class Order extends Model
         'shipping_address'
     ];
 
-    //todo order product
+    protected $appends = [
+        'status_name',
+    ];
 
-    //todo order enum
+    public function getStatusNameAttribute(): ?string
+    {
+        return OrderStatusEnum::STATUS_ALL[$this->status] ?? null;
+    }
 
-    //todo transaction
+    public function items(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function attachProductsToItems($products)
+    {
+        $productMap = collect($products)->keyBy('id');
+
+        foreach ($this->items as $item) {
+            $item->product = $productMap[$item->product_id] ?? null;
+        }
+
+        return $this;
+    }
 }
