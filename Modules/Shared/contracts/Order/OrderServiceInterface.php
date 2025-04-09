@@ -16,21 +16,12 @@ interface OrderServiceInterface
     public function submitOrder(int $user_id, array $cart_items): void;
 
     /**
-     * get order id from transaction id
-     *
-     * @param int $transaction_id
-     * @return int
-     */
-    public function getOrderIdByTransactionId(int $transaction_id): int;
-
-    /**
      * order payed change status
      *
      * @param int $order_id
-     * @param int $transaction_id
      * @return void
      */
-    public function orderPayed(int $order_id, int $transaction_id): void;
+    public function orderPayed(int $order_id): void;
 
     /**
      * get total order amount with order id

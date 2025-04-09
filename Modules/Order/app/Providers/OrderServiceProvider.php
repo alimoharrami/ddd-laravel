@@ -2,8 +2,10 @@
 
 namespace Modules\Order\Providers;
 
+use App\Shared\Contracts\User\OrderServiceInterface;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Order\Shared\OrderService;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -36,6 +38,8 @@ class OrderServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+
+        $this->app->singleton(OrderServiceInterface::class, OrderService::class);
     }
 
     /**
