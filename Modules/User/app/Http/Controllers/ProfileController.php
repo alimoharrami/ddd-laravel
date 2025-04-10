@@ -26,23 +26,16 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
-            'phone' => 'nullable|string|max:255',
-            'address' => 'nullable|string|max:255',
-            'postal_code' => 'nullable|string|max:255',
+        $validatedData = $request->validate([
+            'first_name'   => 'required|string|max:255',
+            'last_name'    => 'required|string|max:255',
+            'email'        => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'phone'        => 'nullable|string|max:255',
+            'address'      => 'nullable|string|max:255',
+            'postal_code'  => 'nullable|string|max:255',
         ]);
-
-        $user->update($request->only([
-            'first_name',
-            'last_name',
-            'email',
-            'phone',
-            'address',
-            'postal_code'
-        ]));
+        
+        $user->update($validatedData);
 
         return response()->json([
             'message' => 'Profile updated successfully',
