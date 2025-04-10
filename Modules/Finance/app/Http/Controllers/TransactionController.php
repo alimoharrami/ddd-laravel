@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Shared\Contracts\User\OrderServiceInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Modules\Finance\Http\Services\PaymentService;
+use Modules\Finance\Services\PaymentService;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class TransactionController extends Controller
@@ -32,11 +32,11 @@ class TransactionController extends Controller
         $amount = $this->orderService->getOrderAmountWithOrderId($order_id);
         if(!$amount) return response()->json(['message' => 'The order does not exist.'], ResponseAlias::HTTP_NOT_FOUND);
 
-        $transaction_id = $this->paymentService->processPayment($amount);
+        $transaction_id = $this->paymentService->processPayment($amount, $order_id);
 
         if(!$transaction_id) return response()->json(['message' => 'The payment was not successful.'], ResponseAlias::HTTP_NOT_ACCEPTABLE);
 
-        $this->orderService->orderPayed($order_id, $transaction_id);
+        $this->orderService->orderPayed($order_id);
 
         return response()->json(['message' => 'The payment was successful.']);
     }
