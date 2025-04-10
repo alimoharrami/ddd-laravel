@@ -1,5 +1,7 @@
 <?php
 
+namespace Modules\Finance\Enums;
+
 class TransactionTypeEnum
 {
     const ORDER_CHECKOUT  = 1;

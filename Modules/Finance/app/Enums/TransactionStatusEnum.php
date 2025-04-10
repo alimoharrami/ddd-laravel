@@ -1,5 +1,7 @@
 <?php
 
+namespace Modules\Finance\Enums;
+
 class TransactionStatusEnum
 {
     const PENDING   = 1;

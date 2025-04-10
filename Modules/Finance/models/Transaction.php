@@ -3,8 +3,8 @@
 namespace App\Modules\Product\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use TransactionStatusEnum;
-use TransactionTypeEnum;
+use Modules\Finance\Enums\TransactionStatusEnum;
+use Modules\Finance\Enums\TransactionTypeEnum;
 
 class Transaction extends Model
 {
