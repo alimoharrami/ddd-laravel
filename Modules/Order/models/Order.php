@@ -4,7 +4,6 @@ namespace App\Modules\Product\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Modules\Challenge\App\Enums\PhaseTypeEnum;
 use Modules\Order\Enums\OrderStatusEnum;
 
 class Order extends Model
@@ -30,7 +29,7 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function attachProductsToItems($products)
+    public function attachProductsToItems($products): Order
     {
         $productMap = collect($products)->keyBy('id');
 
