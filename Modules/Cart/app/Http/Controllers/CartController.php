@@ -89,12 +89,12 @@ class CartController extends Controller
         $cart = Cart::query()->where('user_id', auth()->id())->first();
 
         if (!$cart)
-            return response()->json(['message' => 'Cart not found.'], 404);
+            return response()->json(['message' => 'Cart not found.'], ResponseAlias::HTTP_NOT_FOUND);
 
         $cartItem = $cart->items()->where('product_id', $validated['product_id'])->first();
 
         if (!$cartItem)
-            return response()->json(['message' => 'Item not found in the cart.'], 404);
+            return response()->json(['message' => 'Item not found in the cart.'], ResponseAlias::HTTP_NOT_FOUND);
 
         $cartItem->delete();
 
@@ -106,7 +106,7 @@ class CartController extends Controller
         $cart = Cart::query()->where('user_id', auth()->id())->first();
 
         if (!$cart || $cart->items->isEmpty())
-            return response()->json(['message' => 'Your cart is empty or not found.'], 404);
+            return response()->json(['message' => 'Your cart is empty or not found.'], ResponseAlias::HTTP_NOT_FOUND);
 
         $cartItemsDTOs = $cart->items->map(function ($item) {
             return new CartItemDTO(
