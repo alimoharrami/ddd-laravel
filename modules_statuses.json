@@ -1,0 +1,9 @@
+{
+    "User": true,
+    "Article": true,
+    "Product": true,
+    "Shared": true,
+    "Order": true,
+    "Cart": true,
+    "Finance": true
+}
