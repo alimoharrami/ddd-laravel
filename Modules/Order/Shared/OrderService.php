@@ -11,10 +11,18 @@ use Modules\Order\Enums\OrderStatusEnum;
 
 class OrderService implements OrderServiceInterface
 {
+    public function __construct(
+        private readonly UserServiceInterface $userService,
+        private readonly ProductServiceInterface $productService,
+    )
+    {
+        //
+    }
+
     public function submitOrder(int $user_id, array $cart_items): void
     {
-        $userService = app()->make(UserServiceInterface::class);
-        $productService = app()->make(ProductServiceInterface::class);
+        $userService = $this->userService;
+        $productService = $this->productService;
 
         DB::transaction(function () use ($user_id, $cart_items, $productService, $userService) {
 
